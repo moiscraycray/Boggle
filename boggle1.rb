@@ -1,36 +1,34 @@
+
+
 class BoggleBoard
-  def empty
-    print "-" * 4
-    puts
+  def initialize
+    @spaces = Array.new(16, "_")
   end
 
-  def new_board
-    empty
-    empty
-    empty
-    empty
-  end
+  def to_s
+    output_string = String.new
 
-  def random_letters
-    random = rand(65..90)
-    if random == 81
-      print "Qu "
-    else
-      print "#{random.chr}  "
-    end
-  end
+    letter_array = @spaces
 
-  def shake
+    # until letter_array.count == 0
+    #   output_string << letter_array.shift(4).join(" ")
+    #   output_string << "\n"
+    # end
+
+    # alternative
     4.times do
-      4.times do
-        random_letters
-      end
-      puts
+      output_string << letter_array.shift(4).join(" ") + "\n"
     end
+
+    puts output_string
+
+  end
+
+  def shake!
+
   end
 
 end # end BoggleBoard class
 
-game = BoggleBoard.new
-game.new_board
-game.shake
+board = BoggleBoard.new
+board.to_s
